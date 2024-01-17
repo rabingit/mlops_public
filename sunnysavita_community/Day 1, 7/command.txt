@@ -1,0 +1,9 @@
+docker build -t myhelloworld .
+
+docker images
+
+docker run -d -p 1000:5000 myhelloworld
+
+docker ps
+
+docker stop 91a6b99aa286
