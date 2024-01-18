@@ -54,6 +54,7 @@ docker commit rabinubuntu clone_rabinubuntu
 
 https://www.redswitches.com/blog/docker-add-vs-copy/
 
+#in Dockerfile write the following:
 
 FROM ubuntu
 WORKDIR /tmp
@@ -61,3 +62,27 @@ RUN echo "Subscribe the ineuron intelligence"
 ENV myname sunny
 COPY testfile /tmp
 ADD test.tar.gz /tmp
+
+## 
+FROM ubuntu
+WORKDIR /tmp
+RUN echo "Hello, how are you"
+ENV myname Rabin
+COPY testfile.txt /tmp
+ADD test.tar /tmp
+
+
+tar cvf test.tar test.txt
+
+tar xvf file.tar
+
+docker build -t newimage .
+
+docker run -i -t --name newcontainer newimage /bin/bash 
+
+ls
+
+echo $myname
+
+export n='Rabin Shrestha'
+echo $n
