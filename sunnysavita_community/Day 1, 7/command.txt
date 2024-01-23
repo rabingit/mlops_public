@@ -1,6 +1,15 @@
+https://www.freecodecamp.org/news/docker-101-fundamentals-and-practice-edb047b71a51/
+
+https://www.freecodecamp.org/news/how-to-dockerize-a-flask-app/
+
 RUN: Can be many, and it is used in build process, e.g. install multiple libraries
 
 CMD: Can only have 1, which is your execute start point (e.g. ["npm", "start"], ["node", "app.js"])
+
+CMD is typically used to start a service or application in the container.
+To summarize, RUN is used to execute commands during the build process of a Docker image,
+while CMD is used to specify the default command to run when a Docker container is started from the image.
+
 
 docker where
 
@@ -56,6 +65,10 @@ docker diff rabinubuntu
 
 docker commit rabinubuntu clone_rabinubuntu
 
+docker commit allows you to create a new image from an existing container.
+This means that you can modify the container and then save it as a new image.
+You can then use this image to recreate the container or create new containers based on it.
+
 https://www.redswitches.com/blog/docker-add-vs-copy/
 
 
@@ -65,3 +78,25 @@ RUN echo "Subscribe the ineuron intelligence"
 ENV myname sunny
 COPY testfile /tmp
 ADD test.tar.gz /tmp
+
+
+Run: create a new container of an image, and execute the container.
+You can create N clones of the same image. 
+The command is: docker run IMAGE_ID and not docker run CONTAINER_ID
+
+Start: Launch a container previously stopped. 
+For example, if you had stopped a database with the command docker stop CONTAINER_ID, 
+you can relaunch the same container with the command docker start CONTAINER_ID, and the data and settings will be the same.
+
+run = create + start
+
+docker run --name rabinubuntu -it ubuntu
+
+docker start -i rabinubuntu
+
+docker run --rm -it python:3 python
+--rm : Automatically remove the container when it exits
+
+
+docker container prune
+It removes unused resources, freeing up space and keeping your system clean.
